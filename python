@@ -1,0 +1,127 @@
+import math
+import cmath
+
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    if y != 0:
+        return x / y
+    else:
+        return "Error! Division by zero."
+
+def square_root(x):
+    if x < 0:
+        return cmath.sqrt(x)  # For negative numbers, we use cmath to handle complex results
+    return math.sqrt(x)
+
+def power(x, y):
+    return x ** y
+
+def log(x, base):
+    if x <= 0 or base <= 0:
+        return "Error! Logarithm base and argument must be greater than 0."
+    return math.log(x, base)
+
+def sin(x):
+    return math.sin(math.radians(x))  # Converting degrees to radians
+
+def cos(x):
+    return math.cos(math.radians(x))  # Converting degrees to radians
+
+def tan(x):
+    return math.tan(math.radians(x))  # Converting degrees to radians
+
+def factorial(x):
+    if x < 0:
+        return "Error! Factorial does not exist for negative numbers."
+    elif x == 0 or x == 1:
+        return 1
+    else:
+        return math.factorial(x)
+
+def menu():
+    print("\nAdvanced Calculator")
+    print("Select operation:")
+    print("1. Add")
+    print("2. Subtract")
+    print("3. Multiply")
+    print("4. Divide")
+    print("5. Square Root")
+    print("6. Power")
+    print("7. Logarithm")
+    print("8. Sine")
+    print("9. Cosine")
+    print("10. Tangent")
+    print("11. Factorial")
+    print("12. Exit")
+
+def main():
+    while True:
+        menu()
+        choice = input("Enter choice (1/2/3/4/5/6/7/8/9/10/11/12): ")
+
+        if choice == '12':
+            print("Exiting the calculator. Goodbye!")
+            break
+        
+        if choice in ['1', '2', '3', '4', '6', '7']:
+            try:
+                num1 = float(input("Enter first number: "))
+                num2 = float(input("Enter second number: "))
+            except ValueError:
+                print("Invalid input! Please enter a number.")
+                continue
+
+        elif choice in ['5', '8', '9', '10', '11']:
+            try:
+                num1 = float(input("Enter the number: "))
+            except ValueError:
+                print("Invalid input! Please enter a number.")
+                continue
+        
+        if choice == '1':
+            print(f"{num1} + {num2} = {add(num1, num2)}")
+
+        elif choice == '2':
+            print(f"{num1} - {num2} = {subtract(num1, num2)}")
+
+        elif choice == '3':
+            print(f"{num1} * {num2} = {multiply(num1, num2)}")
+
+        elif choice == '4':
+            print(f"{num1} / {num2} = {divide(num1, num2)}")
+
+        elif choice == '5':
+            print(f"Square root of {num1} = {square_root(num1)}")
+
+        elif choice == '6':
+            print(f"{num1} ^ {num2} = {power(num1, num2)}")
+
+        elif choice == '7':
+            base = float(input("Enter the base for the logarithm: "))
+            print(f"log_{base}({num1}) = {log(num1, base)}")
+
+        elif choice == '8':
+            print(f"sin({num1}) = {sin(num1)}")
+
+        elif choice == '9':
+            print(f"cos({num1}) = {cos(num1)}")
+
+        elif choice == '10':
+            print(f"tan({num1}) = {tan(num1)}")
+
+        elif choice == '11':
+            print(f"Factorial of {int(num1)} = {factorial(int(num1))}")
+
+        else:
+            print("Invalid input! Please select a valid operation.")
+
+if __name__ == "__main__":
+    main()
